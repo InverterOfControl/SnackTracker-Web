@@ -5,5 +5,10 @@
         "includeStack": false
       }
     }
+  },
+  "files": {
+    "loopback#static": {
+      "params": "$!../client"
+    }
   }
 }
