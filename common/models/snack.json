@@ -1,0 +1,36 @@
+{
+  "name": "snack",
+  "plural": "snack",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "Quantity": {
+      "type": "number",
+      "required": true,
+      "default": "1"
+    },
+    "PricePerUnit": {
+      "type": "number",
+      "required": true,
+      "default": "1",
+      "postgresql": {
+        "dataType": "DECIMAL"
+      }
+    },
+    "Date": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

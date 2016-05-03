@@ -1,0 +1,14 @@
+nav ul{
+    list-style-type: none;
+    clear: both;
+}
+nav ul li{
+    float: left;
+    margin: 15px;
+}
+
+.tableButton{
+    padding: 5px;
+    line-height: 1px;
+    height: 22px;
+}
