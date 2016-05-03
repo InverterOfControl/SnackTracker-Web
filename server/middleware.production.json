@@ -10,5 +10,12 @@
     "loopback#static": {
       "params": "$!../client"
     }
+  },
+  "routes": {
+    "loopback#rest": {
+      "paths": [
+        "${restApiRoot}"
+      ]
+    }
   }
 }
