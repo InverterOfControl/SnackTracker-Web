@@ -10,5 +10,18 @@ module.exports = function(app) {
  
       console.log('Models created: \n', snacks);
     });
+    
+  });
+  
+  app.dataSources.snackdb.automigrate('payment', function(err) {
+    if (err) throw err;
+ 
+    app.models.payment.create([
+      { Date: '2016-05-04', Amount: 2}
+      ], function(err, payments){
+        
+        if(err) throw err;
+        console.log('Payments created: \n', payments);
+      })
   });
 };

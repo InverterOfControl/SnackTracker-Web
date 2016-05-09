@@ -3,22 +3,27 @@
     <thead>
       <tr><th>Date</th><th>Snack</th><th>Price</th><th>Quantity</th><th>Sum</th><th>Actions</th></tr>  
     </thead>
-    <tbody ng-repeat="s in snacks">
-      <tr>
-        <td>{{s.Date | date:'yyyy-MM-dd'}}</td>
+    <tbody ng-repeat="s in entries" ng-switch="s.IsSnack">
+      <tr ng-switch-when="true">
+       <td>{{s.Date | date:'yyyy-MM-dd'}}</td>
         <td>{{s.Name}}</td>
         <td>{{s.PricePerUnit | currency:"€ "}}</td>
         <td>{{s.Quantity}}</td>
         <td>{{s.PricePerUnit * s.Quantity | currency:"€ "}}</td>
         <td> <button class="tableButton" ui-sref="edit-snack({ id: s.id })">Edit</button>
-      <button class="tableButton" a ui-sref="delete-snack({ id: s.id })">Delete</button></td>
+        <button class="tableButton" a ui-sref="delete-snack({ id: s.id })">Delete</button></td>
+      </tr>
+      <tr ng-switch-when="false">
+        <td>{{s.Date | date:'yyyy-MM-dd'}}</td>
+        <td class="payment" colspan="3">Payment</td>
+        <td colspan="3">{{s.Amount | currency:"€ "}}</td>
       </tr>
     </tbody>
-    <tfoot>
+     <tfoot>
       <tr>
         <td colspan="3">Sum:</td>
         <th>{{ snacks | sumOfValue: 'Quantity'}}</th>
-        <th colspan="2">{{ snacks | totalSumPriceQty: 'Quantity' : 'PricePerUnit' | currency:"€ "}} </th>
+        <th colspan="2">{{ entries | totalSumPriceQty: 'Quantity' : 'PricePerUnit' | currency:"€ "}}</th>
       </tr>
     </tfoot>
   </table>

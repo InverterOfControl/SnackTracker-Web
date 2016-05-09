@@ -1,0 +1,26 @@
+{
+  "name": "payment",
+  "plural": "payment",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "Date": {
+      "type": "date",
+      "required": true
+    },
+    "Amount": {
+      "type": "number",
+      "required": true,
+       "postgresql": {
+        "dataType": "DECIMAL"
+      }
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

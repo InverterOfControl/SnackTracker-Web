@@ -2,9 +2,22 @@
 
 angular
   .module('app')
-  .controller('SnackController', ['$scope', 'Snack', function($scope,
-      Snack) {
+  .controller('SnackController', ['$scope', 'Snack', 'Payment', '$q', function($scope,
+      Snack, Payment, $q) {
     $scope.snacks = Snack.find({
+    });
+    
+    $scope.payments = Payment.find({});
+    
+    $q.all([$scope.payments.$promise, $scope.snacks.$promise])
+      .then(function(responsesArray) {
+      $scope.entries = [].concat.apply([], responsesArray).sort(function(a, b){
+        return new Date(a.Date) - new Date(b.Date);
+      });
+      
+      angular.forEach($scope.entries, function(el){
+        el.IsSnack = el.Name ? true : false;
+      });
     });
   }])
   .controller('AddSnackController', ['$scope', 'Snack', '$state', function($scope, Snack, $state) {
@@ -84,7 +97,13 @@ angular
 
         var sum = 0;
         angular.forEach(data,function(v,k){
+          if(v.IsSnack){
             sum = sum + (parseFloat(v[key1]) * parseFloat(v[key2]));
+          } else{
+            
+            // hacky :(
+           sum = sum - parseFloat(v['Amount']);
+          }
         });
         return sum;
     }

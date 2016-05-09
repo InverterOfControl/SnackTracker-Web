@@ -26,9 +26,24 @@ angular
       .state('delete-snack', {
         url: '/delete-snack/:id',
         controller: 'DeleteSnackController'
+      })
+      .state('add-payment',{
+        url: '/add-payment',
+        templateUrl: 'views/payment-form.html',
+        controller: 'AddPaymentController'
       });
     $urlRouterProvider.otherwise('snacks');
   }])
+  // make negative currencies display with '-' prefix
+  .config(['$provide', function($provide) {
+        $provide.decorator('$locale', ['$delegate', function($delegate) {
+          //if($delegate.id == 'en-us') {
+            $delegate.NUMBER_FORMATS.PATTERNS[1].negPre = '-\u00A4';
+            $delegate.NUMBER_FORMATS.PATTERNS[1].negSuf = '';
+          //}
+          return $delegate;
+        }]);
+      }])
   .run(['$rootScope', '$state', function($rootScope, $state) {
     $rootScope.$on('$stateChangeStart', function(event, next) {
     });

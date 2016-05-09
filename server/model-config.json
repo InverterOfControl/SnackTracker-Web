@@ -35,5 +35,9 @@
   "snack": {
     "dataSource": "snackdb",
     "public": true
+  },
+  "payment": {
+    "dataSource": "snackdb",
+    "public": true
   }
 }
