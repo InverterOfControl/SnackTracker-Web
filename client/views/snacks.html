@@ -1,22 +1,22 @@
 <section>
-  <table>
+  <table class="table table-hover table-striped">
     <thead>
       <tr><th>Date</th><th>Snack</th><th>Price</th><th>Quantity</th><th>Sum</th><th>Actions</th></tr>  
     </thead>
-    <tbody ng-repeat="s in entries" ng-switch="s.IsSnack">
-      <tr ng-switch-when="true">
-       <td>{{s.Date | date:'yyyy-MM-dd'}}</td>
-        <td>{{s.Name}}</td>
-        <td>{{s.PricePerUnit | currency:"€ "}}</td>
-        <td>{{s.Quantity}}</td>
-        <td>{{s.PricePerUnit * s.Quantity | currency:"€ "}}</td>
-        <td> <button class="tableButton" ui-sref="edit-snack({ id: s.id })">Edit</button>
-        <button class="tableButton" a ui-sref="delete-snack({ id: s.id })">Delete</button></td>
+    <tbody>
+      <tr ng-repeat="s in entries" ng-switch="s.IsSnack">
+       <td ng-switch-when="true">{{s.Date | date:'yyyy-MM-dd'}}</td>
+        <td ng-switch-when="true">{{s.SnackName}}</td>
+        <td ng-switch-when="true">{{s.PricePerUnit | currency:"€ "}}</td>
+        <td ng-switch-when="true">{{s.Quantity}}</td>
+        <td ng-switch-when="true">{{s.PricePerUnit * s.Quantity | currency:"€ "}}</td>
+        <td ng-switch-when="true"> <button class="btn btn-primary btn-sm" ui-sref="edit-snack({ id: s.id })">Edit</button>
+        <button class="btn btn-warning btn-sm" a ui-sref="delete-snack({ id: s.id })">Delete</button></td>
       </tr>
-      <tr ng-switch-when="false">
-        <td>{{s.Date | date:'yyyy-MM-dd'}}</td>
-        <td class="payment" colspan="3">Payment</td>
-        <td colspan="3">{{s.Amount | currency:"€ "}}</td>
+      <tr ng-repeat="s in entries" ng-switch="s.IsSnack">
+        <td ng-switch-when="false">{{s.Date | date:'yyyy-MM-dd'}}</td>
+        <td ng-switch-when="false" class="payment" colspan="3">Payment</td>
+        <td ng-switch-when="false" colspan="3">{{s.Amount | currency:"€ "}}</td>
       </tr>
     </tbody>
      <tfoot>

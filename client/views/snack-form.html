@@ -1,27 +1,26 @@
 <section>
   <form name="form" ng-submit="submitForm()">
-    <fieldset>
+    
       <legend>{{action}} Snack</legend>
-
-      <div class="form-group">
-        <label>Snack name</label>
-        <input type="text" ng-model="snack.Name" />
+      <div class="row">
+        <fieldset class="form-group col-md-3">
+          <label>Snack name</label>
+          <input type="text" bs3-typeahead ng-model="snack.Name" class="form-control" bs3-source = "SnackTypes"/>
+        </fieldset>
+        
+        <fieldset class="form-group col-md-3">
+          <label>Price</label>
+          <div class="input-group">
+            <div class="input-group-addon">€</div>
+            <input type="text" ng-model="snack.PricePerUnit" class="form-control"/>
+          </div>
+        </fieldset>
+  
+        <fieldset class="form-group col-md-3">
+          <label>Quantity</label>
+          <input type="number" ng-model="snack.Quantity" class="form-control"/>
+        </fieldset>
       </div>
-
-      <div class="form-group">
-        <label>Price</label>
-        <input type="text" ng-model="snack.PricePerUnit" />
-      </div>
-
-      <div class="form-group">
-        <label>Quantity</label>
-        <input type="text" ng-model="snack.Quantity" />
-      </div>
-
-      <div class="actions">
-        <label></label>
-        <button>{{action}} Snack</button>
-      </div>
-    </fieldset>
+      <button class="btn btn-primary">{{action}} Snack</button>
   </form>
 <section>

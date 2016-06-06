@@ -4,43 +4,30 @@
     <meta charset="utf-8">
     <title>SnackTracker</title>
     
-    <!-- Google Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
-
-    <!-- CSS Reset -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/milligram/1.1.0/milligram.min.css">
-    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/vendor.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
   </head>
   <body>
-    
-    <header>
-      <h1>SnackTracker</h1>
-      <nav>
-        <ul>
-          <li>
-            <a ui-sref="snacks" ui-sref-active="active">Snacks</a>
-          </li>
-          <li>
-            <a ui-sref="add-snack" ui-sref-active="active">Add Snack</a>
-          </li>
-          <li>
-            <a ui-sref="add-payment" ui-sref-active="active">Add Payment</a>
-          </li>
+      <nav class="navbar navbar-light bg-faded">
+        <a class="navbar-brand" href="#">SnackTracker</a>
+        <ul class="nav navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" ui-sref="snacks" ui-sref-active="active" href="#">Snacks</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" ui-sref="add-snack" ui-sref-active="active">Add Snack</a>
+        </li>
+        <li class="nav-item">
+         <a class="nav-link" ui-sref="add-payment" ui-sref-active="active">Add Payment</a>
+        </li>
         </ul>
       </nav>
-    </header>
-    
-    <div class="container">
+         
+     <div class="container">
       <main ui-view></main>
     </div>
-
-    <script src="vendor/angular.js"></script>
-    <script src="vendor/angular-resource.js"></script>
-    <script src="vendor/angular-ui-router.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/services/lb-services.js"></script>
-    <script src="js/controllers/snack.js"></script>
-    <script src="js/controllers/payment.js"></script>
+    
+    <script src="js/vendor.min.js"></script>
+    <script src="js/snack-track.min.js"></script>
   </body>
 </html>

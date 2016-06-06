@@ -10,11 +10,17 @@
 *.swp
 *.tgz
 *.xml
+.bowerrc
 .DS_Store
 .idea
 .project
 .strong-pm
 coverage
 node_modules
+build
+tmp
+docular_generated
+data
+bower_components
 npm-debug.log
 datasources.*

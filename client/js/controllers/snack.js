@@ -2,25 +2,40 @@
 
 angular
   .module('app')
-  .controller('SnackController', ['$scope', 'Snack', 'Payment', '$q', function($scope,
-      Snack, Payment, $q) {
-    $scope.snacks = Snack.find({
-    });
+  .controller('SnackController', ['$scope', 'Snack', 'Payment', '$q', 'SnackType', function($scope,
+      Snack, Payment, $q, SnackTypes) {
+    $scope.snacks = Snack.find();
     
     $scope.payments = Payment.find({});
     
-    $q.all([$scope.payments.$promise, $scope.snacks.$promise])
+    $scope.snackTypes = SnackTypes.find({});
+    
+    $scope.snackTypes.$promise.then(function(){
+      
+       $q.all([$scope.payments.$promise, $scope.snacks.$promise])
       .then(function(responsesArray) {
       $scope.entries = [].concat.apply([], responsesArray).sort(function(a, b){
         return new Date(a.Date) - new Date(b.Date);
       });
       
       angular.forEach($scope.entries, function(el){
-        el.IsSnack = el.Name ? true : false;
+        el.IsSnack = el.PricePerUnit ? true : false;
+        
+        if(el.IsSnack){
+          
+          
+          var foundSnackType = $scope.snackTypes.filter(function(type){
+            return type.id === el.SnackTypeId;
+          });
+          if(foundSnackType){
+            el.SnackName =  foundSnackType[0].Name;
+          }
+        }
       });
     });
+   });
   }])
-  .controller('AddSnackController', ['$scope', 'Snack', '$state', function($scope, Snack, $state) {
+  .controller('AddSnackController', ['$scope', 'Snack', '$state', 'SnackType', function($scope, Snack, $state, SnackType) {
     $scope.action = 'Add';
     $scope.Snacks = [];
     
@@ -30,8 +45,8 @@ angular
     Snack
       .find()
       .$promise
-      .then(function(Snacks) {
-        $scope.Snacks = Snacks;
+      .then(function(SnackTypes) {
+        $scope.SnackTypes = SnackTypes;
       });
 
     $scope.submitForm = function() {

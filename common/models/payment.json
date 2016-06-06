@@ -14,7 +14,7 @@
     "Amount": {
       "type": "number",
       "required": true,
-       "postgresql": {
+      "postgresql": {
         "dataType": "DECIMAL"
       }
     }

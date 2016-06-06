@@ -33,11 +33,15 @@
     "public": false
   },
   "snack": {
-    "dataSource": "snackdb",
+    "dataSource": "mongoSnack",
     "public": true
   },
   "payment": {
-    "dataSource": "snackdb",
+    "dataSource": "mongoSnack",
+    "public": true
+  },
+  "snackType": {
+    "dataSource": "mongoSnack",
     "public": true
   }
 }
